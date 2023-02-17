@@ -1,15 +1,19 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-export const gloabalLoadingSlice = createSlice({
-    name: "GloabalLoading",
-    initialState: {
-        globalLoading: false
-    },
-    reducers: {
-        setGlaobalLoading: (state, action) => {
-            state.globalLoading = action.payload;
-        }
+export const globalLoadingSlice = createSlice({
+  name: "AuthModal",
+  initialState: {
+    globalLoading: false
+  },
+  reducers: {
+    setGlobalLoading: (state, action) => {
+      state.globalLoading = action.payload;
     }
+  }
 });
-export const { setGlaobalLoading } = gloabalLoadingSlice.actions;
-export default gloabalLoadingSlice.reducer;
+
+export const {
+  setGlobalLoading
+} = globalLoadingSlice.actions;
+
+export default globalLoadingSlice.reducer;
