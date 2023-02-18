@@ -19,11 +19,11 @@ const userApi = {
             return error;
         }
     },
-    signup: async ({ username, passsword, confirmPassword, displayName }) => {
+    signup: async ({ username, password, confirmPassword, displayName }) => {
         try {
             const response = await publicClient.post(
                 userEndpoints.signup,
-                { username, passsword, confirmPassword, displayName }
+                { username, password, confirmPassword, displayName }
             );
             return { response };
         } catch (error) {
