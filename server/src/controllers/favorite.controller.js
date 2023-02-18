@@ -25,10 +25,11 @@ const removeFavorite = async (req, res) => {
 }
 const getFavoritesOfUser = async (req, res) => {
     try {
-        const favorite = favoriteModel.find({ user: req.user.id }).sort("-createdAt");
+        const favorite = await favoriteModel.find({ user: req.user.id }).sort("-createdAt");
+    
         responseHandler.ok(res, favorite);
-    } catch (error) {
+      } catch {
         responseHandler.error(res);
-    }
+      }
 }
 export default { addFavorite, removeFavorite, getFavoritesOfUser };

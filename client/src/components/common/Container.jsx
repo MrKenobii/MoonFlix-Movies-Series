@@ -22,13 +22,13 @@ const Container = ({ header, children }) => {
                 content: '""',
                 position: "absolute",
                 left: { xs: "20px", md: "0" },
-                top: "10-0%",
+                top: "1000%",
                 height: "100px",
                 backgroundColor: "primary.main",
               },
             }}
           >
-            <Typography variant="h5" fontWeight="700">
+            <Typography variant="h5" fontWeight="700" textTransform="uppercase">
               {header}
             </Typography>
           </Box>
