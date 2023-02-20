@@ -18,6 +18,11 @@ import { setGlobalLoading } from "../redux/features/globalLoadingSlice";
 import { setAuthModalOpen } from "../redux/features/authModalSlice";
 import { addFavorite, removeFavorite } from "../redux/features/userSlice";
 import CastSlide from "../components/common/CastSlide";
+import MediaVideosSlide from "../components/common/MediaVideosSlide";
+import BackdropSlide from "../components/common/BackdropSlide";
+import PosterSlide from "../components/common/PosterSlide";
+import RecommendSlide from "../components/common/RecommendSlide";
+import MediaSlide from "../components/common/MediaSlide";
 
 const MediaDetail = () => {
     const { mediaType, mediaId } = useParams();
@@ -119,6 +124,30 @@ const MediaDetail = () => {
                             </Box>
                         </Box>
                     </Box>
+                    <div ref={videoRef} style={{ paddingTop: "2rem"}}>
+                            <Container header="Videos">
+                                <MediaVideosSlide videos={media.videos.results.splice(0, 5)} />
+                            </Container>
+                    </div>
+                    {media.images.backdrops.length > 0 && (
+                        <Container header="backdrops">
+                            <BackdropSlide backdrops={media.images.backdrops} />
+                        </Container>
+                    )}
+                    {media.images.posters.length > 0 && (
+                        <Container header="posters">
+                            <PosterSlide posters={media.images.posters} />
+                        </Container>
+                    )}
+                    
+                    <Container header="you may also like">
+                        {media.recommend.length > 0 && (
+                            <RecommendSlide medias={media.recommend} mediaType={mediaType} /> 
+                        )}
+                        {media.recomend.length === 0 && (
+                            <MediaSlide mediaType={mediaType} mediaCategory={tmdbConfigs.mediaCategory.top_rated} />
+                        )}
+                    </Container>
                 </Box>
             </> 
         ) : null
