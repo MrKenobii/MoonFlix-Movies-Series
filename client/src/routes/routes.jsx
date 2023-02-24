@@ -8,16 +8,17 @@ import PasswordUpdate from "../pages/PasswordUpdate";
 import ReviewList from "../pages/ReviewList";
 import ProtectedPage from "../components/common/ProtectedPage";
 
+
 export const routesGen = {
     home: "/",
-    mediaList: (type) =>  `/${type}`,
+    mediaList: (type) => `/${type}`,
     mediaDetail: (type, id) => `/${type}/${id}`,
     mediaSearch: "/search",
-    person: (id) => `person/${id}`,
+    person: (id) => `/person/${id}`,
     favoriteList: "/favorites",
     reviewList: "/reviews",
-    passwordUpdate: "/password-update"
-};
+    passwordUpdate: "password-update"
+  };
 const routes = [
     {
         index: true,
@@ -25,10 +26,10 @@ const routes = [
         state: "home"
     },
     {
-        path: "person/:personId",
-        element: <PersonDetail/>,
+        path: "/person/:personId",
+        element: <PersonDetail />,
         state: "person.detail"
-    },
+      },
     {
         path: "search",
         element: <MediaSearch/>,

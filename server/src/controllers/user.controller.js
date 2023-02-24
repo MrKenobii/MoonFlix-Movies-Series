@@ -35,17 +35,17 @@ const signin = async (req, res) => {
 }
 const updatePassword = async (req, res) => {
     try {
-        const { password, newPassword } = req.body;
-        const user = await (await userModel.findById(req.user.id)).isSelected("password id salt"); 
-        if(!user) return responseHandler.unathorized(res);
-        if(!user.validPassword(password)) return responseHandler.badRequest(res, "Incorrect password");
-        user.setPassword(newPassword);
-        await user.save();
-        responseHandler.ok(res);
-    } catch (error) {
-        responseHandler.error(res);
+      const { password, newPassword } = req.body;
+      const user = await userModel.findById(req.user.id).select("password id salt");
+      if (!user) return responseHandler.unauthorize(res);
+      if (!user.validPassword(password)) return responseHandler.badrequest(res, "Wrong password");
+      user.setPassword(newPassword);
+      await user.save();
+      responseHandler.ok(res);
+    } catch {
+      responseHandler.error(res);
     }
-}
+  };
 const getInfo = async (req, res) => {
     try {
         const user = await userModel.findById(req.user.id);
